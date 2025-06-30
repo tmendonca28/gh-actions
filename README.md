@@ -13,3 +13,10 @@ Allows us to manage source code changes:
 - Move btwn branches & commits: **checkout**
 - Cloud Git repo storage: **push & pull**
 - Code mgmt & collaborative devpt: issues, projects, PRs
+- Automation & CI/CD: GitHub Actions
+
+### Git Workflow
+- git add <file(s)> or .
+- git commit
+- git push
+
