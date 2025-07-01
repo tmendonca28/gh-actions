@@ -46,3 +46,35 @@ Points to note:
 
 ### Undo commits
 Use git revert \<id>
+This is used to revert changes of commit by creating a new commit
+
+### Resetting code
+`git reset --hard <id>` is used to undo changes by deleting all commits since \<id>.  
+We end up losing history with this
+
+### Ignoring files with .gitignore
+Allows us to specify folders and files to ignore
+For example, if using MacOS and VS code, the .gitignore would look like:
+```
+.vscode
+.DS_Store
+```
+
+### 🪾Branches
+
+```mermaid
+gitGraph
+   commit id: "Initial Commit"
+   branch develop
+   checkout develop
+   commit id: "Add README"
+   branch feature/login
+   checkout feature/login
+   commit id: "Create login UI"
+   checkout develop
+   merge feature/login
+   commit id: "Release v1.0"
+   checkout main
+   merge develop id: "Merge develop into main after release"
+```
+
