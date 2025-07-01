@@ -78,3 +78,21 @@ gitGraph
    merge develop id: "Merge develop into main after release"
 ```
 
+Creating a new branch `git branch <name>`  
+We then need to change to the branch using `git checkout <name>`.  
+
+We could also do the same faster using `git checkout -b <name>` to create and switch to the new branch instantaneously
+
+After working on some code in the new branch, we can merge branches using `git merge <name>`
+
+
+
+To delete a branch we use `git branch -D <name>`
+
+### Creating a Personal Access Token
+Profile → Settings → Developer Settings → Personal access tokens
+
+Generate new token (repo)
+
+Copy the token and paste it into the password on VS Code.
+
