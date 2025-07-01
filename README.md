@@ -96,3 +96,34 @@ Generate new token (repo)
 
 Copy the token and paste it into the password on VS Code.
 
+### Collaborating with Others
+
+To merge branches we create a **pull request**
+Create a new pull request, then select base as *main* and the compare as your branch i.e. *feat-my-fancy-code*
+
+Then click **Create Pull Request**
+
+Provide a title and well thought out description (or follow instructions provided by the repo owner)
+
+Then, click **Create Pull Request** again
+
+#### Using Forks
+Click Fork, then create fork
+
+Then clone it locally using `git clone`
+
+Set the URL by running `git remote set-url origin <URL>`
+
+Run `git checkout -b feat/my-new-feature`
+
+Then write out your code, stage the changes and commit them
+
+Push your code using `git push origin feat/my-new-feature`
+
+Go to original repo and open a PR.
+
+Then choose the base repo as the main one and the main branch as the base, and your repo and the source and compare branch.
+
+Add a descriptive title and message (following contribution guidelines) and Create the Pull Request
+
+
