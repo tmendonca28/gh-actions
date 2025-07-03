@@ -127,3 +127,31 @@ Then choose the base repo as the main one and the main branch as the base, and y
 Add a descriptive title and message (following contribution guidelines) and Create the Pull Request
 
 
+## GitHub Actions
+### Building Blocks & Components
+The most important parts are:
+- Workflows
+- Jobs
+- Steps
+
+How do these relate?
+- We can have a **workflow** in a GitHub repo that has 1 or more **jobs**; each job can have 1 or more **steps**
+<br></br>
+```mermaid
+flowchart TD
+    A[Workflow: Workflow 1] --> B[Job 1 : build]
+    A --> C[Job: test]
+    B --> B1[Step: Checkout code]
+    B --> B2[Step: Setup env]
+    B --> B3[Step: Run build script]
+    C --> C1[Step: Checkout code]
+    C --> C2[Step: Run unit tests]
+    C --> C3[Step: Upload test report]
+```
+<br></br>
+Workflows are triggered by *Events*.  
+We define a **Runner** (execution env) within a *Job*; and contain one or more Steps to run on that runner.
+They run in parallel (default) or sequential and can be conditional.   
+Steps will execute a shell script or an action. These can be custom or 3P actions.   
+Steps are executed in order.
+
