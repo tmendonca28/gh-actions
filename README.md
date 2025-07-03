@@ -140,7 +140,7 @@ How do these relate?
 ```mermaid
 flowchart TD
     A[Workflow: Workflow 1] --> B[Job 1 : build]
-    A --> C[Job: test]
+    A --> C[Job 2: test]
     B --> B1[Step: Checkout code]
     B --> B2[Step: Setup env]
     B --> B3[Step: Run build script]
@@ -150,8 +150,75 @@ flowchart TD
 ```
 <br></br>
 Workflows are triggered by *Events*.  
-We define a **Runner** (execution env) within a *Job*; and contain one or more Steps to run on that runner.
+We define a **Runner** (execution env) within a *Job*; and they contain one or more Steps to run on that runner.
 They run in parallel (default) or sequential and can be conditional.   
 Steps will execute a shell script or an action. These can be custom or 3P actions.   
 Steps are executed in order.
+
+### Example GitHub Action file
+Github workflows would be found at `.github/workflows/`.  
+A sample workflow,called first-action.yml is as follows:
+```yaml
+name: First Workflow
+on: workflow_dispatch
+jobs:
+   first-job:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Print greeting
+           run: echo "Hello World!"
+         - name: Print goodbye
+           run: echo "Done - Sayonara!"
+```
+
+Then click Start Commit and commit new file.   
+GitHub Action files are part of your code and hence are considered commits.   
+If we want to run multiple commands we can use the pipe symbol after the run key:
+```yaml
+run: |
+   echo "Something"
+   echo "Something else"
+```
+
+### Events (Workflow Triggers)
+These could be Repository-related (non-exhaustive):
+- push
+- pull_request
+- create
+- fork
+- issues
+- issue_comment
+- watch
+- discussion
+
+Others:
+- workflow_dispatch (manually trigger workflow)
+- repository_dispatch
+- schedule
+- workflow_call
+
+⭐️ More events can be found [here](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
+
+### Using Actions in Workflows
+Action: An application that performs a (typically complex), frequently repeated task.   
+You can build your own or use official/community actions.   
+Command "run": A (typically simple) shell command defined by you.
+
+⭐️ More actions can be found [here](https://github.com/marketplace?type=actions)
+
+Example of an action:
+```yaml
+name: Test Project
+on: push
+jobs:
+   test:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Get code
+           uses: actions/checkout@v3
+         - name: Install dependencies
+           run: npm ci
+         - name: Run tests
+           run: npm test
+```
 
