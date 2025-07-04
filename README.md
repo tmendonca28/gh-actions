@@ -1,3 +1,4 @@
+# GitHub Actions & Detection-as-Code
 This repo is a personal learning log for mastering Git and GitHub Actions, with a focus on applying CI/CD workflows to detection engineering projects and mastering devsecops.
 
 ## Code Deployment (CI/CD)
@@ -220,5 +221,60 @@ jobs:
            run: npm ci
          - name: Run tests
            run: npm test
+```
+
+### Failing & Analyzing Workflows
+We can check results on the workflow in GitHub and either fix the code accordingly.
+
+### Adding Multiple Jobs
+Let's say we would like to deploy to a server after pushing, we can add a that as another job:
+
+```yaml
+name: Deploy Project
+on: push
+jobs:
+   test:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Get code
+           uses: actions/checkout@v3
+         - name: Install dependencies
+           run: npm ci
+         - name: Run tests
+           run: npm test
+   deploy:
+      needs: test
+      runs-on: ubuntu-latest
+      steps:
+         - name: Get code
+           uses: actions/checkout@v3
+         - name: Install dependencies
+           run: npm ci
+         - name: Build project
+           run: npm run build
+         - name: Deploy
+           run: echo "Deploying to the world..."
+```
+
+‼️ Remember, every job gets its own runner i.e., it's own VM that is totally isolated from other machines or jobs.
+
+### Parallel vs Sequential Jobs
+Jobs run in parallel by default.  
+To get a job to run after another, we can use the `needs` keyword as seen above in the deploy job.  
+
+### Using Multiple Triggers or Events
+Let's say we want multiple triggers e.g.,  we want to both trigger a job on push as well as have a manual interaction we can wrap the events in square brackets as follows `on: [push, workflow_dispatch]`
+
+### Expresssion & Context Objects
+Output.yaml
+```yml
+name: Output information
+on: workflow_dispatch
+jobs:
+   info:
+      runs-on: ubuntu-latest
+      steps:
+        -  name: Output GitHub context
+           run: echo "${{ toJSON(github) }}"
 ```
 
