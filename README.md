@@ -278,3 +278,6 @@ jobs:
            run: echo "${{ toJSON(github) }}"
 ```
 
+
+## Sentinel with IaC
+IaC is managing and provision infra through code instead of manual processes.
