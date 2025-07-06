@@ -281,3 +281,25 @@ jobs:
 
 ## Sentinel with IaC
 IaC is managing and provision infra through code instead of manual processes.
+
+### Repositories
+Allows us to automate deployment and mgmt of Sentinel content through repo like GitHub & Azure DevOps.  
+Supported content types:
+- Analytics rules
+- Threat hunt queries
+- Automation rules
+- Playbooks
+- Parsers
+- Workbooks (visualization)
+
+### Managing Sentinel with Azure ARM Templates
+ARM is not cloud agnostic and is completely Azure specific.   
+ARM == Azure Resource Manager.  
+JSON files that represent resources as code.  
+
+### Managing Sentinel with Azure Bicep
+Domain-specific language that uses declarative syntax to deploy Azure resources.  
+Only works in Azure.  
+
+### ### Managing Sentinel with Terraform
+Cloud agnostic IaC language.  
