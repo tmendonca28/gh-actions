@@ -301,5 +301,5 @@ JSON files that represent resources as code.
 Domain-specific language that uses declarative syntax to deploy Azure resources.  
 Only works in Azure.  
 
-### ### Managing Sentinel with Terraform
+###  Managing Sentinel with Terraform
 Cloud agnostic IaC language.  
