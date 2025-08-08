@@ -1,6 +1,9 @@
 # GitHub Actions & Detection-as-Code
 This repo is a personal learning log for mastering Git and GitHub Actions, with a focus on applying CI/CD workflows to detection engineering projects and mastering devsecops.
 
+### 🛠️ Why This Matters
+Mastering these skills will help me automate and scale detection engineering efforts using secure, repeatable and version-controlled workflows.
+
 ## Code Deployment (CI/CD)
 Automate code testing, building and deployment
 
